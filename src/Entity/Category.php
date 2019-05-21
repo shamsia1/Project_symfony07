@@ -1,8 +1,15 @@
 <?php
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection
+namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
+use phpDocumentor\Reflection\Types\Self_;
+
+/**
+ * @ORM\Entity(repositoryClass="App\Repository\CategoryRepository")
+ */
 class Category
 {
     //...
@@ -11,7 +18,7 @@ class Category
      */
     private $articles;
 
-public function__construct()
+public function __construct()
 {
 $this->articles = new ArrayCollection();
 }
@@ -20,14 +27,12 @@ $this->articles = new ArrayCollection();
 /**
  * @return Collection|Article[]
  */
-public
-function getArticles(): Collection
+public function getArticles(): Collection
 {
     return $this->articles;
 }
 
-public
-function addArticle(Article $article): Self
+public function addArticle(Article $article): Self
 {
     if (!$this->articles->contains($article)) {
         $this->articles[] = $article;
