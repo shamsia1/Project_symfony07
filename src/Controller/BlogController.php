@@ -27,7 +27,7 @@ class BlogController extends AbstractController
 
         if (!$articles) {
             throw $this->createNotFoundException(
-                'No article found in articlle\'s table.'
+                'No article found in article\'s table.'
             );
         }
 
@@ -101,17 +101,20 @@ class BlogController extends AbstractController
 
     /**
      * @Route("blog/category/{categoryName}", name="show_category")
+     * @return Response A response instance
      */
 
-    public function showByCategory(string $categoryName)
+    public function showByCategory(string $categoryName): Response
     {
 
+
         $category= $this->getDoctrine()->getRepository(Category::class)->findOneBy(['name' => $categoryName]);
-       // $categoryArticles = $this->getDoctrine()->getRepository(Article::class)->findBy(['category' => $category
-        //], ['id' => 'DESC'], 3);
+        // old $categoryArticles = $this->getDoctrine()->getRepository(Article::class)->findBy(['category' => $categoryName
+        // old ], ['id' => 'DESC'], 3);
         $categoryArticles = $category->getArticles();
         return $this->render('blog/category.html.twig', ['categoryArticle' => $categoryArticles]);
-    }
 
+
+    }
 
 }
