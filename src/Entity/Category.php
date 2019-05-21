@@ -1,14 +1,8 @@
 <?php
 
-namespace App\Entity;
-
-use Doctrine\ORM\Mapping as ORM;
-use phpDocumentor\Reflection\Types\Self_;
-use Symfony\Component\Validator\Constraints\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
-/**
- * @ORM\Entity(repositoryClass="App\Repository\CategoryRepository")
- */
+use Doctrine\Common\Collections\Collection
+
 class Category
 {
     //...
