@@ -23,19 +23,20 @@ class BlogController extends AbstractController
     public function index(): Response
     {
         $articles = $this->getDoctrine()
-            ->getRepository(Article::class)
-            ->findAll();
+        ->getRepository(Article::class)
+        ->findAll();
 
-        if (!$articles) {
-            throw $this->createNotFoundException(
-                'No article found in article\'s table.'
-            );
-        }
+         if (!$articles) {
+         throw $this->createNotFoundException(
+          'No article found in article\'s table.'
+        );
+         }
 
         return $this->render(
-            'blog/index.html.twig',
-            ['articles' => $articles]
+         'blog/index.html.twig',
+        ['articles' => $articles]
         );
+
     }
 
     /**
@@ -56,7 +57,7 @@ class BlogController extends AbstractController
         // traitement d'un formulaire par exemple
 
         // redirection vers la page 'blog_list', correspondant à l'url /blog/list/5
-        return $this->redirectToRoute('blog_list',['page' => 5]);
+        return $this->redirectToRoute('blog_list', ['page' => 5]);
     }
 
 
@@ -101,23 +102,23 @@ class BlogController extends AbstractController
     }
 
     /**
-    // * @Route("blog/category/{categoryName}", name="show_category")
-     //* @return Response A response instance
-    // * @ParamConverter("categoryName", class="App\Entity\Category")
-    // */
+     * // * @Route("blog/category/{categoryName}", name="show_category")
+     * //* @return Response A response instance
+     * // * @ParamConverter("categoryName", class="App\Entity\Category")
+     * // */
 
     //public function showByCategory(string $categoryName): Response
-   // {
+    // {
 
 
-        //$category= $this->getDoctrine()->getRepository(Category::class)->findOneBy(['name' => $categoryName]);
-        // old $categoryArticles = $this->getDoctrine()->getRepository(Article::class)->findBy(['category' => $categoryName
-        // old ], ['id' => 'DESC'], 3);
-       // $categoryArticles = $category->getArticles();
-        //return $this->render('blog/category.html.twig', ['categoryArticle' => $categoryArticles]);
+    //$category= $this->getDoctrine()->getRepository(Category::class)->findOneBy(['name' => $categoryName]);
+    // old $categoryArticles = $this->getDoctrine()->getRepository(Article::class)->findBy(['category' => $categoryName
+    // old ], ['id' => 'DESC'], 3);
+    // $categoryArticles = $category->getArticles();
+    //return $this->render('blog/category.html.twig', ['categoryArticle' => $categoryArticles]);
 
 
-   // }
+    // }
 
 
     /**
@@ -131,7 +132,9 @@ class BlogController extends AbstractController
         return $this->render(
             'blog/category.html.twig',
             ['category' => $categoryName,
-                'articles' => $articles, ]);
+                'articles' => $articles,]);
     }
+
 }
+
 
