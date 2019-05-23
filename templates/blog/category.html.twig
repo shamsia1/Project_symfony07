@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-{% for categoryArticle in categoryArticle %}
-{{ categoryArticle.id }}: {{ categoryArticle.title }}<br>
-{{ categoryArticle.content }}
+{% for article in articles %}
+{{ article.id }}: {{ article.title }}<br>
+{{ article.content }}
 {% endfor %}
 {% endblock %}

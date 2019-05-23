@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -100,21 +101,37 @@ class BlogController extends AbstractController
     }
 
     /**
-     * @Route("blog/category/{categoryName}", name="show_category")
-     * @return Response A response instance
-     */
+    // * @Route("blog/category/{categoryName}", name="show_category")
+     //* @return Response A response instance
+    // * @ParamConverter("categoryName", class="App\Entity\Category")
+    // */
 
-    public function showByCategory(string $categoryName): Response
-    {
+    //public function showByCategory(string $categoryName): Response
+   // {
 
 
-        $category= $this->getDoctrine()->getRepository(Category::class)->findOneBy(['name' => $categoryName]);
+        //$category= $this->getDoctrine()->getRepository(Category::class)->findOneBy(['name' => $categoryName]);
         // old $categoryArticles = $this->getDoctrine()->getRepository(Article::class)->findBy(['category' => $categoryName
         // old ], ['id' => 'DESC'], 3);
-        $categoryArticles = $category->getArticles();
-        return $this->render('blog/category.html.twig', ['categoryArticle' => $categoryArticles]);
+       // $categoryArticles = $category->getArticles();
+        //return $this->render('blog/category.html.twig', ['categoryArticle' => $categoryArticles]);
 
 
+   // }
+
+
+    /**
+     * @route("/blog/category/{name}",
+     *      name="category_show"),
+     * @ParamConverter("categoryName", class="App\Entity\Category")
+     */
+    public function showByCategory(Category $categoryName): Response
+    {
+        $articles = $categoryName->getArticles();
+        return $this->render(
+            'blog/category.html.twig',
+            ['category' => $categoryName,
+                'articles' => $articles, ]);
     }
-
 }
+
