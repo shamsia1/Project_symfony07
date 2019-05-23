@@ -16,7 +16,7 @@ class CategoryType extends AbstractType
     {
         $builder
             //->add('field_name')
-            ->add('category')
+            ->add('Category')
             ->add('Article');
 
 
