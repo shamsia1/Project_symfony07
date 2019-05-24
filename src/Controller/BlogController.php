@@ -5,6 +5,7 @@ namespace App\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Article;
@@ -134,6 +135,8 @@ class BlogController extends AbstractController
             ['category' => $categoryName,
                 'articles' => $articles,]);
     }
+
+
 
 }
 

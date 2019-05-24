@@ -3,10 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Category;
-use Doctrine\DBAL\Types\DateTimeType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -16,8 +13,7 @@ class CategoryType extends AbstractType
     {
         $builder
             //->add('field_name')
-            ->add('Category')
-            ->add('Article');
+            ->add('name');
 
 
     }
@@ -26,7 +22,7 @@ class CategoryType extends AbstractType
     {
         $resolver->setDefaults([
             // Configure your form options here
-           // 'data_class' => Contact::class,
+            'data_class' => Category::class,
         ]);
     }
 }
